@@ -1,3 +1,5 @@
 {
-   "python.pythonPath": "C:\\Users\\micha\\OneDrive\\Desktop\\Git\\webdev\\webdev_venv\\Scripts\\python"
+   "python.pythonPath": "C:\\Users\\micha\\OneDrive\\Desktop\\Git\\webdev\\webdev_venv\\Scripts\\python",
+   "editor.cursorStyle": "line",
+   "terminal.integrated.cursorStyle": "line",
 }

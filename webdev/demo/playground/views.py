@@ -4,6 +4,12 @@ from django.http import HttpResponse
 # request -> response
 # request handler
 # action
+def homepage_view(*args, **kwargs):
+    return HttpResponse('<h1>You are looking at the home page! :) </h1>')
+
+def contact_view(*args, **kwargs):
+    return HttpResponse('<h1>This is the contact page, ring ring!</h1>')
+
 def calculate():
     x = 1
     y = 2

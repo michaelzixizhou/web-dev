@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
-
+from playground import views
 
 urlpatterns = [
+    path('', views.homepage_view, name='home'),
     path('admin/', admin.site.urls),
     # chops off playground from urls
     path('playground/', include('playground.urls')),

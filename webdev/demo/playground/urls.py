@@ -3,5 +3,4 @@ from . import views
 
 # URLconf module
 urlpatterns = [
-    path('hello/', views.say_hello)
 ]

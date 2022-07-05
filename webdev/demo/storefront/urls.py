@@ -20,6 +20,8 @@ from playground import views
 
 urlpatterns = [
     path('', views.homepage_view, name='home'),
+    path('contact/', views.contact_view),
+    path('about/', views.about_view),
     path('admin/', admin.site.urls),
     # chops off playground from urls
     path('playground/', include('playground.urls')),

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Product
+from .forms import ProductForm, RawProductForm
 # Create your views here.
 # request -> response
 # request handler
@@ -24,11 +26,46 @@ def about_view(request, *args, **kwargs):
     }
     return render(request, 'about.html', my_about)
 
-def calculate():
-    x = 1
-    y = 2
-    return x
+# product view
 
-def say_hello(request):
-    x = calculate()
-    return render(request, 'hello.html', {'name': 'Michael'})
+def product_create_view(request):
+    my_form = RawProductForm(request.GET)
+    if request.method == "POST":
+        my_form = RawProductForm(request.POST)
+        if my_form.is_valid():
+            print(my_form.cleaned_data)
+            Product.objects.create(**my_form.cleaned_data)
+        else:
+            print(my_form.errors)
+    context = {
+        "form": my_form
+
+    }
+    return render(request, 'product/product_create.html', context)
+
+# def product_create_view(request):
+#     # GET is a dictionary
+#     # POST is safer than GEt
+#     my_new_title = request.POST.get('title')
+    
+#     context = {
+#     }
+#     return render(request, 'product/product_create.html', context)
+
+# def product_create_view(request):
+#     form = ProductForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         form = ProductForm()
+
+#     context = {
+#         'form': form
+#     }
+#     return render(request, 'product/product_create.html', context)
+
+def product_detail_view(request):
+    obj = Product.objects.get(id=1)
+    context = {
+        'object': obj
+    }
+    return render(request, 'product/detail.html', context)

@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
 from playground import views
+from playground.views import product_create_view, product_detail_view
 
 urlpatterns = [
     path('', views.homepage_view, name='home'),
     path('contact/', views.contact_view),
     path('about/', views.about_view),
     path('admin/', admin.site.urls),
+    path('product/', product_detail_view),
+    path('create/', product_create_view),
     # chops off playground from urls
     path('playground/', include('playground.urls')),
     path('__debug__/', include(debug_toolbar.urls))
